@@ -2,14 +2,19 @@ import React, { Component, Fragment } from 'react'
 import '../styles/login.less'
 import '../styles/iconfont.less'
 import { Image } from 'antd'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import Home from './Home'
+import { Menu } from 'antd'
+const { SubMenu } = Menu
 class Login extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {}
+		this.state = { current: 'mail' }
+	}
+	handleClick = (e) => {
+		console.log('click ', e)
+		this.setState({ current: e.key })
 	}
 	render() {
+		const { current } = this.state
 		return (
 			<Fragment>
 				<div className="main-page">
@@ -24,18 +29,14 @@ class Login extends Component {
 							400-700-0065
 						</p>
 					</div>
-					<Router>
-						<ul>
-							<li>
-								{' '}
-								<Link to="/">首页</Link>{' '}
-							</li>
-							<li>
-								<Link to="/list/">列表</Link>{' '}
-							</li>
-						</ul>
-						<Route path="/list" exact component={Home} />
-					</Router>
+					<Menu
+						onClick={this.handleClick}
+						selectedKeys={[current]}
+						mode="horizontal"
+					>
+						<Menu.Item key="mail">Navigation One</Menu.Item>
+						<Menu.Item key="app">Navigation Two</Menu.Item>
+					</Menu>
 				</div>
 			</Fragment>
 		)
