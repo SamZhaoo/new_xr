@@ -1,23 +1,49 @@
 .main-page {
 	width: 100vw;
-    height: 840px;
-    overflow: hidden;
+	height: 840px;
+	overflow: hidden;
 	background: url('../images/newbg-login.jpg');
-	.top {
+	.panel {
 		width: 1200px;
 		margin: 41px auto 0;
-		display: flex;
-		justify-content: space-between;
-		.right {
-            color: #fff;
-            font-weight: 700;
-            font-size: 16px;
-            .icontell{
-                margin-right: 10px;
-                font-size: 22px;
-                position: relative;
-                top: 2px;
-            }
+		.top {
+			display: flex;
+			justify-content: space-between;
+			.right {
+				color: #fff;
+				font-weight: 700;
+				font-size: 16px;
+				.icontell {
+					margin-right: 10px;
+					font-size: 22px;
+					position: relative;
+					top: 2px;
+				}
+			}
+		}
+		.box {
+			width: 332px;
+			height: 360px;
+			float: right;
+			margin-top: 149px;
+			margin-right: 100px;
+			background: #fff;
+			.box_item {
+				display: flex;
+				justify-content: space-around;
+			}
+			.content {
+				box-sizing: border-box;
+                padding: 29px 24px 0;
+                .tell_btn{
+                    margin-bottom: 20px;
+                }
+                .yzm_btn{
+                    .ant-input-search-button{
+                        width: 110px;
+                    }
+                }
+			}
 		}
 	}
 }
