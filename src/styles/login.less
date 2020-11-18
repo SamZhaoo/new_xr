@@ -3,6 +3,9 @@
 	height: 840px;
 	overflow: hidden;
 	background: url('../images/newbg-login.jpg');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
 	.panel {
 		width: 1200px;
 		margin: 41px auto 0;
@@ -34,14 +37,31 @@
 			}
 			.content {
 				box-sizing: border-box;
-                padding: 29px 24px 0;
-                .tell_btn{
-                    margin-bottom: 20px;
+				padding: 29px 24px 0;
+				.tell_btn {
+					margin-bottom: 20px;
+				}
+				.yzm_btn {
+					.ant-input-search-button {
+						width: 110px;
+					}
+				}
+				.login_btn {
+					width: 100%;
+					margin-top: 45px;
+					height: 37px;
+					background: linear-gradient(90deg, #ffad91, #ff5a53);
+					border: 0;
+					font-size: 18px;
+				}
+				.cb_infos {
+					margin-top: 12px;
+					font-size: 12px;
                 }
-                .yzm_btn{
-                    .ant-input-search-button{
-                        width: 110px;
-                    }
+                .register_btn{
+                    display: inline-block;
+                    margin: 24px 0;
+                    cursor: pointer;
                 }
 			}
 		}

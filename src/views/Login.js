@@ -1,23 +1,18 @@
 import React, { Component, Fragment } from 'react'
 import '../styles/login.less'
 import '../styles/iconfont.less'
-import { Image } from 'antd'
-import { Menu } from 'antd'
-import { Input } from 'antd'
+import { Image, Checkbox, Menu, Input, Button } from 'antd'
 import { PhoneOutlined, SafetyCertificateOutlined } from '@ant-design/icons'
 const { Search } = Input
 class Login extends Component {
 	constructor(props) {
 		super(props)
-		this.state = { current: 'quick', yzmNum: 61 }
+		this.state = { current: 'quick', yzmNum: 61, disabledFlag: false }
 		this.getYzm = this.getYzm.bind(this)
-	}
-	handleClick = (e) => {
-		console.log('click ', e)
-		this.setState({ current: e.key })
+		this.onChange = this.onChange.bind(this)
 	}
 	render() {
-		const { current, yzmNum } = this.state
+		const { current, yzmNum, disabledFlag } = this.state
 		return (
 			<Fragment>
 				<div className="main-page">
@@ -64,6 +59,33 @@ class Login extends Component {
 										onSearch={this.getYzm}
 										style={{ width: 284 }}
 									/>
+									<Button
+										type="primary"
+										disabled={disabledFlag}
+										className="login_btn"
+									>
+										登 录
+									</Button>
+									<Checkbox
+                                        onChange={this.onChange}
+                                        defaultChecked
+										className="cb_infos"
+									>
+										我已阅读并接受
+										<a
+											href="http://www.ciprun.com/agreement"
+											target="_blank"
+										>
+											[服务条款]
+										</a>
+										<a
+											href="http://www.ciprun.com/privacy"
+											target="_blank"
+										>
+											[隐私权政策]
+										</a>
+									</Checkbox>
+                                    <span className="register_btn">立即注册</span>
 								</div>
 							) : (
 								<div key="name" className="content">
@@ -75,6 +97,10 @@ class Login extends Component {
 				</div>
 			</Fragment>
 		)
+	}
+	handleClick = (e) => {
+        console.log('click ', e)
+        this.setState({ current: e.key })
 	}
 	getYzm(val) {
 		let yzmFun = setInterval(() => {
@@ -92,6 +118,10 @@ class Login extends Component {
 				})
 			}
 		}, 1000)
+	}
+	onChange() {
+		let d = !this.state.disabledFlag
+		this.setState({ disabledFlag: d })
 	}
 }
 
