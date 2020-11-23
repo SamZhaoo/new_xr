@@ -10,6 +10,7 @@ class Login extends Component {
 		this.state = { current: 'quick', yzmNum: 61, disabledFlag: false }
 		this.getYzm = this.getYzm.bind(this)
 		this.onChange = this.onChange.bind(this)
+		this.openHomePage = this.openHomePage.bind(this)
 	}
 	render() {
 		const { current, yzmNum, disabledFlag } = this.state
@@ -63,29 +64,34 @@ class Login extends Component {
 										type="primary"
 										disabled={disabledFlag}
 										className="login_btn"
+										onClick={this.openHomePage}
 									>
 										登 录
 									</Button>
 									<Checkbox
-                                        onChange={this.onChange}
-                                        defaultChecked
+										onChange={this.onChange}
+										defaultChecked
 										className="cb_infos"
 									>
 										我已阅读并接受
 										<a
 											href="http://www.ciprun.com/agreement"
 											target="_blank"
+											rel="noopener noreferrer"
 										>
 											[服务条款]
 										</a>
 										<a
 											href="http://www.ciprun.com/privacy"
 											target="_blank"
+											rel="noopener noreferrer"
 										>
 											[隐私权政策]
 										</a>
 									</Checkbox>
-                                    <span className="register_btn">立即注册</span>
+									<span className="register_btn">
+										立即注册
+									</span>
 								</div>
 							) : (
 								<div key="name" className="content">
@@ -99,8 +105,8 @@ class Login extends Component {
 		)
 	}
 	handleClick = (e) => {
-        console.log('click ', e)
-        this.setState({ current: e.key })
+		console.log('click ', e)
+		this.setState({ current: e.key })
 	}
 	getYzm(val) {
 		let yzmFun = setInterval(() => {
@@ -122,6 +128,10 @@ class Login extends Component {
 	onChange() {
 		let d = !this.state.disabledFlag
 		this.setState({ disabledFlag: d })
+	}
+	openHomePage() {
+		console.log(this.props)
+		this.props.history.push("/home");
 	}
 }
 
